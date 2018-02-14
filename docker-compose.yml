@@ -1,0 +1,12 @@
+version: '2'
+services:
+  node:
+    container_name: react
+    ports:
+      - "3000:3000"
+      - "35729:35729"
+    image: node:9.5
+    command: [sh, -c, yarn && yarn start]
+    volumes:
+      - .:/app
+    working_dir: /app
