@@ -1,7 +1,17 @@
 version: '2'
 services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+    links:
+      - node 
   node:
     container_name: react
+    hostname: react
     ports:
       - "3000:3000"
       - "35729:35729"
