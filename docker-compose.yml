@@ -2,21 +2,21 @@ version: '2'
 services:
   nginx:
     image: nginx:alpine
-    container_name: nginx
+    container_name: nginx-dirve-sample
     ports:
       - "80:80"
     volumes:
-      - "./nginx/conf.d:/etc/nginx/conf.d"
+      - ./nginx/conf.d:/etc/nginx/conf.d
     links:
-      - node 
-  node:
-    container_name: react
-    hostname: react
+      - react-drive-sample
+  react-drive-sample:
+    container_name: react-drive-sample
+    hostname: react-drive-sample
     ports:
       - "3000:3000"
       - "35729:35729"
     image: node:9.5
     command: [sh, -c, yarn && yarn start]
     volumes:
-      - .:/app
+      - ./react/.:/app
     working_dir: /app
