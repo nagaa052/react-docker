@@ -1,17 +1,17 @@
 version: '2'
 services:
-  nginx:
+  drive-nginx:
     image: nginx:alpine
-    container_name: nginx-dirve-sample
+    container_name: dirve-nginx
     ports:
       - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
     links:
-      - react-drive-sample
-  react-drive-sample:
-    container_name: react-drive-sample
-    hostname: react-drive-sample
+      - drive-react
+  drive-react:
+    container_name: drive-react
+    hostname: drive-react
     ports:
       - "3000:3000"
       - "35729:35729"
